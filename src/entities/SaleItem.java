@@ -1,9 +1,26 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
 
-public class SaleItem {
+public class SaleItem implements Serializable {
+
+    public SaleItem(int id, int length, int width, int acreage, double unitPrice, String rateType, Date createdAt, Date updatedAt, Date issuedAt, String address, int numberOfRoom, int numberOfPerson, String itemName) {
+        this.id = id;
+        this.length = length;
+        this.width = width;
+        this.acreage = acreage;
+        this.unitPrice = unitPrice;
+        this.rateType = rateType;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.issuedAt = issuedAt;
+        this.address = address;
+        this.numberOfRoom = numberOfRoom;
+        this.numberOfPerson = numberOfPerson;
+        this.itemName = itemName;
+    }
 
     private int id;
     private int length;
