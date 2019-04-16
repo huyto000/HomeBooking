@@ -1,9 +1,26 @@
 package entities;
 
 import java.io.Serializable;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class SaleItem implements Serializable {
+public class SaleItem implements Serializable, Comparable<SaleItem> {
+
+    private int id;
+    private int length;
+    private int width;
+    private int acreage;
+    private double unitPrice;
+    private String rateType;
+    private Date createdAt;
+    private Date updatedAt;
+    private Date issuedAt;
+    private String address;
+    private int numberOfRoom;
+    private int numberOfPerson;
+    private String itemName;
+    Format formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public SaleItem(int id, int length, int width, int acreage, double unitPrice, String rateType, Date createdAt, Date updatedAt, Date issuedAt, String address, int numberOfRoom, int numberOfPerson, String itemName) {
         this.id = id;
@@ -21,22 +38,9 @@ public class SaleItem implements Serializable {
         this.itemName = itemName;
     }
 
-    private int id;
-    private int length;
-    private int width;
-    private int acreage;
-    private double unitPrice;
-    private String rateType;
-    private Date createdAt;
-    private Date updatedAt;
-    private Date issuedAt;
-    private String address;
-    private int numberOfRoom;
-    private int numberOfPerson;
-    private String itemName;
 
-
-    public SaleItem() {}
+    public SaleItem() {
+    }
 
     public int getId() {
         return id;
@@ -74,7 +78,7 @@ public class SaleItem implements Serializable {
         return unitPrice;
     }
 
-    public void setUnitPrice(int unitPrice) {
+    public void setUnitPrice(double unitPrice) {
         this.unitPrice = unitPrice;
     }
 
@@ -90,24 +94,24 @@ public class SaleItem implements Serializable {
         this.rateType = rateType;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
+    public String getCreatedAt() {
+        return formatter.format(createdAt);
     }
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
-        return updatedAt;
+    public String getUpdatedAt() {
+        return formatter.format(updatedAt);
     }
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
 
-    public Date getIssuedAt() {
-        return issuedAt;
+    public String getIssuedAt() {
+        return formatter.format(issuedAt);
     }
 
     public void setIssuedAt(Date issuedAt) {
@@ -146,7 +150,8 @@ public class SaleItem implements Serializable {
         this.itemName = itemName;
     }
 
-
-
-
+    @Override
+    public int compareTo(SaleItem saleItem) {
+        return (int) (this.unitPrice = saleItem.unitPrice);
+    }
 }
